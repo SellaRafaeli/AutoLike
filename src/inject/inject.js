@@ -41,8 +41,8 @@ function shouldLike(post) {
 function likeConditionally(post) { 
 	//console.log("checking post by"+getPosterName(post));	
 	var likeBtn = getLikeBtn(post); 
-	if (shouldLike(post) && likeBtn) {		
-		console.log("Liking post by "+getPosterName(post));
+	if (likeBtn && shouldLike(post)) {		
+		console.log("Liking post by "+getPosterName(post)+" in a sec...");
 		
 		//wait about two seconds to simulate a human
 		var timeToWait = Math.floor(Math.random() * 1000)+2000;			
@@ -103,7 +103,7 @@ chrome.extension.sendMessage({}, function(response) {
 		// This part of the script triggers when page is done loading		
 		console.log("inject.js - version 1");
 		//likeAllFriendsPosts();
-		setInterval(function() {console.log("In interval"); likeAllFriendsPosts()}, 3000);
+		setInterval(function() {likeAllFriendsPosts()}, 3000);
 		// ----------------------------------------------------------
 
 	}
